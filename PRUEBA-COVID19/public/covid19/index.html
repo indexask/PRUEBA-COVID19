@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+</head>
+<body>
+ <!--  nav covid -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="logo text-light">
+        <h1>Covid19</h1>
+      </div>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" id="homePageNav"
+            >Home <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link d-none" id="SituacionChileNav"
+            >Situacion Chile<span class="sr-only" >(current)</span></a
+          >
+        </li>
+        <li class="nav-item active">
+          <a id="iniciarSesion" class="nav-link" data-toggle="modal" data-target="#modalIniciarSesion"
+            >Iniciar Sesion <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item active">
+          <a id="cerrarSesionNav" class="nav-link d-none" 
+            >Cerrar Sesion<span class="sr-only">(current)</span></a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- modal graficos paises especificos -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+        <div class="modal-body">
+          <canvas id="myChartModal"></canvas>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="buttonCloseDelete" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal de iniciar sesion -->
+  <div class="modal fade" id="modalIniciarSesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="iniciarSesion">Ingresar Datos</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="js-input-email">Email address</label>
+              <input type="email" class="form-control" id="js-input-email" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+              <label for="js-input-password">Password</label>
+              <input type="password" class="form-control" id="js-input-password">
+              
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button  type="button"  id="js-form" class="btn btn-primary">Iniciar Sesion</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- pagina home-->
+  <div class="container" id="Homepage">
+    <!-- grafico home contagios-->
+    <div>
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <!-- tabla de paises -->
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Paises</th>
+            <th scope="col">Casos Activos</th>
+            <th scope="col">Casos Confirmados</th>
+            <th scope="col">Casos Muerte</th>
+            <th scope="col">Casos Recapacitados</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+  </div>
+
+  <!-- grafico situacion chile y spinner de loading-->
+  <div class="container">
+    <div>
+      <canvas class="d-none" id="myChartChile"></canvas>
+      <div class="text-center d-none" id="spinnerChileGrafico">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script type="module" src="./assets/scripts.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+    crossorigin="anonymous"
+  ></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
